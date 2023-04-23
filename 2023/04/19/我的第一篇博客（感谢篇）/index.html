@@ -415,7 +415,7 @@
 <p>​        好巧不巧，刚好最近十八岁大寿。朋友不需要太多，一两个就好。朋友要给我过大寿，要叫我室友一起参加，我就告诉室友，我生日你有时间吗？奈何他是个社恐，加之一听地点在胡桃里，好家伙，我不去，不喜欢这种环境。强人所难是个不好的习惯，我可不能做那种事情，你们说呢？但是我最先想到的当然是伊诺先生（悄悄滴，千万不要跑去告诉我室友哈)，说时迟，那时快，我又想这样是不是不好呀，心里不想，但是手很诚实，你明天下班有什么安排吗？如果没有，我想邀请你参加我的生日，伊诺先生好讲究，好客气。说是没有给我准备礼物，这是事情吗？重点是你来，你不知道吗？</p>
 <p>​        时钟嘀嗒嘀嗒，时间很快来到了第二天，很快到了下班点，加班是不可能加班的，毕竟不是每年都润二月，错过了第一次，第二次总不能再错过。毕竟下一次润二月是好久好久的事情，我相信伊诺先生不是故意要迟到的，晚上19点多一丢丢，伊诺先生到了，下单开饭。<br>​        一群狼吞虎咽的人，坐在台下，做菜的速度嫣然跟不上我们吃菜的速度，好家伙，这一群人是真饿呀。嘀嗒嘀嗒，时间它不停的转动，终于到了听歌环节，一点不准时，说好的19:30，我可是音乐的忠实粉丝。<br>​       即使再饿的人，终归也有吃饱的时候吧。吃的差不多，开始进入生日必备一换，切蛋糕，唱生日歌，我是真的开心。<br>​          快乐的时间总是过的飞快，约定晚上21:50回家，谢谢给我过生日的小伙伴，爱你们哟。朋友是真的奢侈，一大束玫瑰，筋摩枪，精油，好家伙，钱不是钱是的，破费了哈，都不是知道怎么感谢你们。<br>​         急切想把博客搭好，就是因为快乐短暂，好记性不如烂笔头，美好的日子应该记录下来。感谢前前后后指导我搭博客的伊诺先生，分享是一件无比快乐的事情，尤其是和志同道合的人一起，快乐岂止翻倍，感谢有你们，人间不值得，但是因为有你们而变得不一样，让这个世间所有的美好环环相扣。<br>​            啰里吧嗦这么久，终于写完了，又没有写完，感谢阅读此偏的读者，后期会持续更新。</p>
 <hr>
-
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
             <hr/>
@@ -654,6 +654,43 @@
 </div>
 
 
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 777<br />'
+            + '文章作者: 777<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
@@ -804,7 +841,7 @@
                    type="playlist"
                    id="503838841"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
@@ -1043,17 +1080,36 @@ $(function () {
     
     
     
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
 
     <!-- 雪花特效 -->
     
 
     <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
     
 
- <!-- 动态线条背景 -->
+<!--动态线条背景-->
         <script type="text/javascript"
         color="122 103 238" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas_nest.js/1.0.0/canvas_nest.min.js">   
         </script>
+<!--樱花特效-->
+<script src="/js/sakura.js"></script>
 <!--烟花爆炸-->
   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
