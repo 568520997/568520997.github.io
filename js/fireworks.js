@@ -1,3 +1,4 @@
+/*
 "use strict";
 
 function updateCoords(e) {
@@ -208,3 +209,4 @@ if (canvasEl) {
             e.target.nodeName && (render.play(), updateCoords(e), animateParticules(pointerX, pointerY))
     }, !1), setCanvasSize(), window.addEventListener("resize", setCanvasSize, !1)
 };
+*/
