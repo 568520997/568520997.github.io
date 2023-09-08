@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Gitlab目录遍历漏洞复现（CVE-2023-2825）, 777">
-    <meta name="description" content="【产品介绍】
-Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby on rails构建，主要针对软件开发过程中产生的代码和文档进行管理，同时可以搭建web服务。其实我理解这个产品和我们的github近似。
-【漏洞描述】
-">
+    <meta name="keywords" content="BeijingCrypt勒索病毒介绍, 777">
+    <meta name="description" content="
+【声明】
+分享的安全工具和项目均来源于网络，仅供学术交流，请勿直接用于任何商业场合和非法用途。如用于其它用途，由使用者承担全部法律及连带责任，和作者无关。
+【BeijingCrypt勒索病毒介绍】该勒索病毒主要通过爆破远程桌面，入侵后进行">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Gitlab目录遍历漏洞复现（CVE-2023-2825） | 777</title>
+    <title>BeijingCrypt勒索病毒介绍 | 777</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -348,12 +348,12 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Gitlab目录遍历漏洞复现（CVE-2023-2825）</h1>
+                    <h1 class="description center-align post-title">BeijingCrypt勒索病毒介绍</h1>
                 </div>
             </div>
         </div>
@@ -375,8 +375,8 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
-                                <span class="chip bg-color">漏洞复现</span>
+                            <a href="/tags/%E8%BF%9B%E5%87%BB%E7%9A%84%E8%8F%9C%E9%B8%9F/">
+                                <span class="chip bg-color">进击的菜鸟</span>
                             </a>
                         
                     </div>
@@ -398,7 +398,7 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-02
+                    2023-09-08
                 </div>
                 
 
@@ -422,65 +422,25 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>【产品介绍】</strong></p>
-<p>Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby on rails构建，主要针对软件开发过程中产生的代码和文档进行管理，同时可以搭建web服务。其实我理解这个产品和我们的github近似。</p>
-<p><strong>【漏洞描述】</strong></p>
-<p>Gitlab存在目录遍历漏洞，当嵌套在至少五个组中的公共项目中存在附件时，未经身份验证的恶意用户可以利用该漏洞读取服务器上的任意文件。</p>
+                <hr>
+<p><strong>【声明】</strong></p>
+<p>分享的安全工具和项目均来源于网络，仅供学术交流，<strong>请勿直接用于任何商业场合和非法用途</strong>。如用于其它用途，由使用者承担全部法律及连带责任，和作者无关。</p>
+<h5 id="【BeijingCrypt勒索病毒介绍】"><a href="#【BeijingCrypt勒索病毒介绍】" class="headerlink" title="【BeijingCrypt勒索病毒介绍】"></a><strong>【</strong>BeijingCrypt勒索病毒介绍<strong>】</strong></h5><p>该勒索病毒主要通过爆破远程桌面，入侵后进行手动投毒执行加密程序。同时受害者机器上被发现大量工具，从工具看该勒索病毒传播还在不断攻击内网其他机器以及想通过抓取密码的方式获取更多机器的密码。</p>
 <p><strong>【影响范围】</strong></p>
-<p>Gitlab CE 16.0.0</p>
-<p>Gitlab EE 16.0.0</p>
-<p><strong>【复现环境】</strong></p>
-<p>1、Docker搭建gitLab CE 16.0.0</p>
-<p><strong>【拉取镜像】</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitlab/gitlab-ce:16.0.0-ce.0</span><br></pre></td></tr></table></figure>
-
-<p><strong>【创建并开启容器】</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 80:80 -d gitlab/gitlab-ce:16.0.0-ce.0</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://777.enomothem.com/777/image-20230831155814553.png" alt="image-20230831155814553"></p>
-<p>查看一下咱们的这个地址是啥</p>
-<p><img src="http://777.enomothem.com/777/image-20230831161723668.png" alt="image-20230831161723668"></p>
-<p>访问看看能否正常访问</p>
-<p><img src="http://777.enomothem.com/777/image-20230831161053488.png" alt="image-20230831161053488"></p>
-<p>接下来，我们需要查看任务id是什么，我们后面会用到id号查询Gitlab的账号和密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a  </span><br></pre></td></tr></table></figure>
-
-<p><img src="http://777.enomothem.com/777/image-20230831162150889.png" alt="image-20230831162150889"></p>
-<p>【<strong>查看root密码</strong>】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it f1fa5580d7c0 /bin/bash</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/gitlab/initial_root_password</span><br></pre></td></tr></table></figure>
-
-<p>赶紧用小本本写下来</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831163351795.png" alt="image-20230831163351795"></p>
-<p>下面登录我们的Gitlab，输入我们刚刚写的密码</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831163842868.png" alt="image-20230831163842868"></p>
-<p>登录成功，创建组</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831164012801.png" alt="image-20230831164012801"></p>
-<p>首先我们创建一个组，然后再创建多层子目录</p>
-<p><img src="http://777.enomothem.com/777/image-20230831165920440.png" alt="image-20230831165920440"></p>
-<p>创建一个文件</p>
-<p><img src="http://777.enomothem.com/777/image-20230831170053961.png" alt="image-20230831170053961"></p>
-<p>随意创建一个空项目</p>
-<p><img src="http://777.enomothem.com/777/image-20230831170408442.png" alt="image-20230831170408442"></p>
-<p>创建一个issue，并记录路径</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831171037510.png" alt="image-20230831171037510"></p>
-<p>因为777不爱加班，所以前后数据有点对不上，开启重新走了一遍流程，我们接着下面继续</p>
-<p><strong>【创建一个issue】</strong></p>
-<p><img src="http://777.enomothem.com/777/image-20230902160423716.png" alt="image-20230902160423716"></p>
-<p>【注意！！！】</p>
-<p>前面吃了没有文化的亏，还懒。这个创建目录的时候，手要勤快一点，多建立几层，买不了吃亏，买不了上当</p>
-<p>【复制链接】</p>
-<p>这是咱们刚issue创建处的文件喔</p>
-<p><img src="http://777.enomothem.com/777/image-20230902160623997.png" alt="image-20230902160623997"></p>
-<p><strong>【拼接地址】</strong></p>
-<p>可以读到附件中的内容哈</p>
-<p><img src="http://777.enomothem.com/777/image-20230902161428006.png" alt="image-20230902161428006"></p>
-<p><strong>【构造payload】</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://777.enomothem.com/777/image-20230902161710285.png" alt="image-20230902161710285"></p>
-<p>费了九牛二虎之力，终于学废了。</p>
+<p>WPS Office 2023 个人版 低于12.1.0.15120（含） WPS Office机构版本（如专业版、专业增强版） 低于11.8.2.12055（含）</p>
+<p><strong>【文件特征】</strong></p>
+<p>加密文件的拓展名为“.360”、beijing</p>
+<p>【<strong>BeijingCrypt传播方式</strong>】</p>
+<p>远程桌面口令爆破；</p>
+<p>关闭远程桌面，或者修改默认用户administrator；</p>
+<p>数据库弱口令攻击；</p>
+<p>检查数据库的sa用户的密码复杂度。</p>
+<p><strong>【日常防护建议】</strong></p>
+<p>1、安全规划 网络架构 业务、数据、服务分离，不同部门与区域之间通过 VLAN 和子网分 离，减少因为单点沦陷造成大范围的网络受到攻击。 </p>
+<p>2、内外网隔离 合理设置 DMZ 区域，对外提供服务的设备要做严格管控。减少企业 被外部攻击的暴露面。对外暴露机器可通过虚拟化部署，定期做快 照备份等方式减少损失。</p>
+<p>3、安全设备部署 在企业终端和网络关键节点部署安全设备，并日常排查设备告警情况。 </p>
+<p>4、权限控制 包括业务流程权限与人员账户权限都应该做好控制，如控制共享网络权限，原则上以最小权限提供服务。降低因为单个账户沦陷而造成更大范围影响。 </p>
+<p>5、数据备份保护 对关键数据和业务系统做备份，如离线备份，异地备份，云备份等，避免因为数据丢失、被加密等造成业务停摆，甚至被迫向攻击者妥协。尽量做到多方式备份。</p>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
                 
             </div>
@@ -507,7 +467,7 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/08/31/Gitlab%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2023-2825%EF%BC%89/">http://example.com/2023/08/31/Gitlab%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2023-2825%EF%BC%89/</a>
+                    <a href="http://example.com/2023/08/31/BeijingCrypt%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E4%BB%8B%E7%BB%8D/">http://example.com/2023/08/31/BeijingCrypt%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E4%BB%8B%E7%BB%8D/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -545,8 +505,8 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
-                                    <span class="chip bg-color">漏洞复现</span>
+                                <a href="/tags/%E8%BF%9B%E5%87%BB%E7%9A%84%E8%8F%9C%E9%B8%9F/">
+                                    <span class="chip bg-color">进击的菜鸟</span>
                                 </a>
                             
                         </div>
@@ -625,9 +585,10 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/08/31/BeijingCrypt%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E4%BB%8B%E7%BB%8D/">
                     <div class="card-image">
@@ -645,9 +606,9 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -656,6 +617,7 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -674,13 +636,13 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/29/powershel%E8%84%9A%E6%9C%ACl%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99/">
+                <a href="/2023/08/31/Gitlab%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2023-2825%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="powershell脚本运行报错">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Gitlab目录遍历漏洞复现（CVE-2023-2825）">
                         
-                        <span class="card-title">powershell脚本运行报错</span>
+                        <span class="card-title">Gitlab目录遍历漏洞复现（CVE-2023-2825）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -691,7 +653,7 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-31
                             </span>
                         <span class="publish-author">
                             
@@ -704,8 +666,8 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BF%9B%E5%87%BB%E7%9A%84%E8%9C%97%E7%89%9B/">
-                        <span class="chip bg-color">进击的蜗牛</span>
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
+                        <span class="chip bg-color">漏洞复现</span>
                     </a>
                     
                 </div>

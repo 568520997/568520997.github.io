@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Gitlab目录遍历漏洞复现（CVE-2023-2825）, 777">
-    <meta name="description" content="【产品介绍】
-Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby on rails构建，主要针对软件开发过程中产生的代码和文档进行管理，同时可以搭建web服务。其实我理解这个产品和我们的github近似。
-【漏洞描述】
-">
+    <meta name="keywords" content="标签: 进击的菜鸟, 777">
+    <meta name="description" content="三人行，必有我师焉。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Gitlab目录遍历漏洞复现（CVE-2023-2825） | 777</title>
+    <title>标签: 进击的菜鸟 | 777</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -331,455 +328,214 @@ Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby 
 
 </header>
 
-    
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                Seven
+                
+            </div>
 
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">Gitlab目录遍历漏洞复现（CVE-2023-2825）</h1>
-                </div>
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="/libs/typed/typed.js"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
+                            
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
             </div>
         </div>
     </div>
 </div>
 
 
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
 
 
-<main class="container content">
+    </div>
+</div>
+
+<main class="content">
 
     
-    <!-- 文章内容详情 -->
-<div id="artDetail">
+
+<div id="tags" class="container chip-container">
     <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
-                                <span class="chip bg-color">漏洞复现</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                </div>
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
             </div>
-
-            <div class="post-info">
+            <div class="tag-chips">
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-31
-                </div>
                 
-
+                <a href="/tags/%E8%BF%9B%E5%87%BB%E7%9A%84%E8%8F%9C%E9%B8%9F/" title="进击的菜鸟: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="进击的菜鸟" style="background-color: #F9EBEA;">进击的菜鸟
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-02
-                </div>
                 
-
+                <a href="/tags/%E8%8F%9C%E9%B8%9F%E5%AD%A6kali/" title="菜鸟学kali: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="菜鸟学kali" style="background-color: #F5EEF8;">菜鸟学kali
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
                 
-
                 
-
+                <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" title="漏洞复现: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="漏洞复现" style="background-color: #D5F5E3;">漏洞复现
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
+                
+                <a href="/tags/%E8%BF%9B%E5%87%BB%E7%9A%84%E8%9C%97%E7%89%9B/" title="进击的蜗牛: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="进击的蜗牛" style="background-color: #E8F8F5;">进击的蜗牛
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Tools/" title="Tools: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Tools" style="background-color: #FEF9E7;">Tools
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%84%9F%E6%82%9F/" title="感悟: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="感悟" style="background-color: #F8F9F9;">感悟
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E9%81%87%E8%A7%81/" title="遇见: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="遇见" style="background-color: #82E0AA;">遇见
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/LOVE/" title="LOVE: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="LOVE" style="background-color: #D7BDE2;">LOVE
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/English/" title="English: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="English" style="background-color: #A3E4D7;">English
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%81%9A%E8%8F%9C/" title="做菜: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="做菜" style="background-color: #85C1E9;">做菜
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%84%9F%E8%B0%A2/" title="感谢: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="感谢" style="background-color: #F8C471;">感谢
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%9F%BA%E7%A1%80/" title="基础: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="基础" style="background-color: #F9E79F;">基础
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
             </div>
         </div>
-        <hr class="clearfix">
-
-        
-
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <p><strong>【产品介绍】</strong></p>
-<p>Gitlab是目前被广泛使用基于git的开源代码管理平台，基于ruby on rails构建，主要针对软件开发过程中产生的代码和文档进行管理，同时可以搭建web服务。其实我理解这个产品和我们的github近似。</p>
-<p><strong>【漏洞描述】</strong></p>
-<p>Gitlab存在目录遍历漏洞，当嵌套在至少五个组中的公共项目中存在附件时，未经身份验证的恶意用户可以利用该漏洞读取服务器上的任意文件。</p>
-<p><strong>【影响范围】</strong></p>
-<p>Gitlab CE 16.0.0</p>
-<p>Gitlab EE 16.0.0</p>
-<p><strong>【复现环境】</strong></p>
-<p>1、Docker搭建gitLab CE 16.0.0</p>
-<p><strong>【拉取镜像】</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitlab/gitlab-ce:16.0.0-ce.0</span><br></pre></td></tr></table></figure>
-
-<p><strong>【创建并开启容器】</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 80:80 -d gitlab/gitlab-ce:16.0.0-ce.0</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://777.enomothem.com/777/image-20230831155814553.png" alt="image-20230831155814553"></p>
-<p>查看一下咱们的这个地址是啥</p>
-<p><img src="http://777.enomothem.com/777/image-20230831161723668.png" alt="image-20230831161723668"></p>
-<p>访问看看能否正常访问</p>
-<p><img src="http://777.enomothem.com/777/image-20230831161053488.png" alt="image-20230831161053488"></p>
-<p>接下来，我们需要查看任务id是什么，我们后面会用到id号查询Gitlab的账号和密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a  </span><br></pre></td></tr></table></figure>
-
-<p><img src="http://777.enomothem.com/777/image-20230831162150889.png" alt="image-20230831162150889"></p>
-<p>【<strong>查看root密码</strong>】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it f1fa5580d7c0 /bin/bash</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/gitlab/initial_root_password</span><br></pre></td></tr></table></figure>
-
-<p>赶紧用小本本写下来</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831163351795.png" alt="image-20230831163351795"></p>
-<p>下面登录我们的Gitlab，输入我们刚刚写的密码</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831163842868.png" alt="image-20230831163842868"></p>
-<p>登录成功，创建组</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831164012801.png" alt="image-20230831164012801"></p>
-<p>首先我们创建一个组，然后再创建多层子目录</p>
-<p><img src="http://777.enomothem.com/777/image-20230831165920440.png" alt="image-20230831165920440"></p>
-<p>创建一个文件</p>
-<p><img src="http://777.enomothem.com/777/image-20230831170053961.png" alt="image-20230831170053961"></p>
-<p>随意创建一个空项目</p>
-<p><img src="http://777.enomothem.com/777/image-20230831170408442.png" alt="image-20230831170408442"></p>
-<p>创建一个issue，并记录路径</p>
-<p><img src="C:\Users\96229\AppData\Roaming\Typora\typora-user-images\image-20230831171037510.png" alt="image-20230831171037510"></p>
-<p>因为777不爱加班，所以前后数据有点对不上，开启重新走了一遍流程，我们接着下面继续</p>
-<p><strong>【创建一个issue】</strong></p>
-<p><img src="http://777.enomothem.com/777/image-20230902160423716.png" alt="image-20230902160423716"></p>
-<p>【注意！！！】</p>
-<p>前面吃了没有文化的亏，还懒。这个创建目录的时候，手要勤快一点，多建立几层，买不了吃亏，买不了上当</p>
-<p>【复制链接】</p>
-<p>这是咱们刚issue创建处的文件喔</p>
-<p><img src="http://777.enomothem.com/777/image-20230902160623997.png" alt="image-20230902160623997"></p>
-<p><strong>【拼接地址】</strong></p>
-<p>可以读到附件中的内容哈</p>
-<p><img src="http://777.enomothem.com/777/image-20230902161428006.png" alt="image-20230902161428006"></p>
-<p><strong>【构造payload】</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://777.enomothem.com/777/image-20230902161710285.png" alt="image-20230902161710285"></p>
-<p>费了九牛二虎之力，终于学废了。</p>
-<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">777</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://example.com/2023/08/31/Gitlab%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2023-2825%EF%BC%89/">http://example.com/2023/08/31/Gitlab%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2023-2825%EF%BC%89/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">777</a>
-                    !
-                </span>
-            </div>
-        
     </div>
+</div>
 
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
+    
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="进击的菜鸟" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2023/08/31/BeijingCrypt%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E4%BB%8B%E7%BB%8D/">
+                        <div class="card-image tag-image">
                             
-                                <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
-                                    <span class="chip bg-color">漏洞复现</span>
-                                </a>
                             
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="BeijingCrypt勒索病毒介绍">
+                            
+                            <span class="card-title">BeijingCrypt勒索病毒介绍</span>
                         </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2023/08/31/BeijingCrypt%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E4%BB%8B%E7%BB%8D/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="BeijingCrypt勒索病毒介绍">
-                        
-                        <span class="card-title">BeijingCrypt勒索病毒介绍</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-31
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            777
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%9B%E5%87%BB%E7%9A%84%E8%8F%9C%E9%B8%9F/">
-                        <span class="chip bg-color">进击的菜鸟</span>
                     </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/08/29/powershel%E8%84%9A%E6%9C%ACl%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="powershell脚本运行报错">
-                        
-                        <span class="card-title">powershell脚本运行报错</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
+                    <div class="card-content article-content">
+                        <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-31
                             </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            777
-                            
-                        </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                777
+                                
+                            </span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%9B%E5%87%BB%E7%9A%84%E8%9C%97%E7%89%9B/">
-                        <span class="chip bg-color">进击的蜗牛</span>
-                    </a>
-                    
-                </div>
-                
             </div>
+            
         </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 777<br />'
-            + '文章作者: 777<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-
-    
-
+    </article>
 </main>
 
 
